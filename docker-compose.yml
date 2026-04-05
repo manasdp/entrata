@@ -2,12 +2,14 @@ version: '3.8'
 
 services:
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Phase-3-Docker/Dockerfile
     container_name: php_app
     ports:
       - "8080:80"
     volumes:
-      - .:/var/www/html
+      - ./Phase-1-Development/Fashion-fusion:/var/www/html
     depends_on:
       - db
 
