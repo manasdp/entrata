@@ -50,7 +50,7 @@ This project is a full-stack e-commerce website built using **PHP, MySQL, HTML, 
   * Public IP access
 * Application is live at:
 
-👉 http://43.204.237.27:8080
+👉 http://3.111.225.52:8080/:8080
 
 ---
 
