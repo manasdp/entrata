@@ -51,7 +51,7 @@ This project is a full-stack e-commerce website built using **PHP, MySQL, HTML, 
   * Elastic IP
 * Application is live at:
 
-👉 http://3.111.225.52:8080/:8080
+👉 http://3.111.225.52:8080
 
 ---
 
