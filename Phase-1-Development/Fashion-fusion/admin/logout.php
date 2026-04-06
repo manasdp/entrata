@@ -1,13 +1,20 @@
 <?php
 session_start();
+
+// Unset all session variables
 session_unset();
+
+// Destroy the session
 session_destroy();
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Logout</title>
 </head>
 <body>
 
