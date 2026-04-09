@@ -1,0 +1,148 @@
+// 1. Basic Function
+<form method="POST" action="">
+    Name: <input type="text" name="name">
+    <input type="submit" value="Submit">
+</form>
+
+//Handle form submission
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    echo "Hello " . $name;
+}
+?>
+
+//Using $_GET
+<form method="GET" action="">
+    Age: <input type="text" name="age">
+    <input type="submit">
+</form>
+
+<?php
+if (isset($_GET['age'])) {
+    echo "Age: " . $_GET['age'];
+}
+?>
+
+//Input Validation
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+
+    if (empty($name)) {
+        echo "Name is required";
+    } else {
+        echo "Hello " . htmlspecialchars($name);
+    }
+}
+?>
+
+//Form with Multiple Fields
+<form method="POST">
+    Name: <input type="text" name="name"><br>
+    Email: <input type="email" name="email"><br>
+    <input type="submit">
+</form>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+
+    echo "Name: $name <br>";
+    echo "Email: $email";
+}
+?>
+
+//Radio Buttons
+<form method="POST">
+    Gender:
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female
+    <input type="submit">
+</form>
+<?php
+if (isset($_POST['gender'])) {
+    echo "Gender: " . $_POST['gender'];
+}
+?>
+
+//Checkboxes
+<form method="POST">
+    Skills:
+    <input type="checkbox" name="skills[]" value="PHP"> PHP
+    <input type="checkbox" name="skills[]" value="JS"> JS
+    <input type="submit">
+</form>
+
+<?php
+if (!empty($_POST['skills'])) {
+    foreach ($_POST['skills'] as $skill) {
+        echo $skill . "<br>";
+    }
+}
+?>
+
+//Select Dropdown
+<form method="POST">
+    City:
+    <select name="city">
+        <option value="Pune">Pune</option>
+        <option value="Mumbai">Mumbai</option>
+    </select>
+    <input type="submit">
+</form>
+
+<?php
+if (isset($_POST['city'])) {
+    echo "City: " . $_POST['city'];
+}
+?>
+
+//Secure Input Handling
+<?php
+function clean_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = clean_input($_POST['name']);
+    echo "Safe Name: " . $name;
+}
+?>
+
+//Real Mini Project Example
+<!DOCTYPE html>
+<html>
+<body>
+
+<form method="POST">
+    Name: <input type="text" name="name"><br>
+    Email: <input type="email" name="email"><br>
+    Age: <input type="number" name="age"><br>
+
+    <input type="submit">
+</form>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $age = (int)$_POST['age'];
+
+    if (empty($name) || empty($email)) {
+        echo "All fields required!";
+    } else {
+        echo "<h3>User Data:</h3>";
+        echo "Name: $name <br>";
+        echo "Email: $email <br>";
+        echo "Age: $age";
+    }
+}
+?>
+
+</body>
+</html>

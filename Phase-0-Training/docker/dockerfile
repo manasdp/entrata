@@ -1,0 +1,47 @@
+```dockerfile id="1v6qfz"
+# ==========================================
+# NODE APP DOCKERFILE
+# ==========================================
+
+# Base image
+FROM node:18
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy all files
+COPY . .
+
+# Expose port
+EXPOSE 3000
+
+# Start app
+CMD ["npm", "start"]
+
+```
+
+```dockerfile id="7m4r1o"
+# ==========================================
+# PHP + APACHE DOCKERFILE
+# ==========================================
+
+# Base image
+FROM php:8.2-apache
+
+# Copy project files to Apache root
+COPY . /var/www/html/
+
+# Expose port 80
+EXPOSE 80
+
+# Start Apache
+CMD ["apache2-foreground"]
+
+```
+
